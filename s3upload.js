@@ -65,7 +65,7 @@ S3Upload.prototype.uploadToS3 = function(file) {
     });
     return Evaporate.create(evaporateOptions).then(function(evaporate){
       var addConfig = {
-        name: this.s3path + file.name,
+        name: this.s3path + this.scrubFilename(file.name),
         file: file,
         contentType: file.type,
         progress: function(p, stats){
